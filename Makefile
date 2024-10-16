@@ -6,7 +6,7 @@
 #    By: yibrahim <yibrahim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/14 17:07:48 by yibrahim          #+#    #+#              #
-#    Updated: 2024/10/14 17:23:29 by yibrahim         ###   ########.fr        #
+#    Updated: 2024/10/15 12:12:47 by yibrahim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,19 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 AR = ar rcs
-INCLUDE = ft_printf.h
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+INCLUDE = libftprintf.h
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(AR) $@ $^
+		$(AR) $(NAME) $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 
 clean:
-		rm -f $(NAME)
+		rm -f $(OBJS)
 
 fclean: clean
 		rm -f $(NAME)

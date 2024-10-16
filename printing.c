@@ -6,7 +6,7 @@
 /*   By: yibrahim <yibrahim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:48:01 by yibrahim          #+#    #+#             */
-/*   Updated: 2024/10/14 16:59:25 by yibrahim         ###   ########.fr       */
+/*   Updated: 2024/10/15 10:38:16 by yibrahim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ int	ft_putchar(char c)
 	write(1, &c, 1);
 	return (1);
 }
+
 int	ft_putstr(char *str)
 {
 	int	count;
-	
+
 	count = 0;
 	if (!str)
 		str = "(null)";
@@ -38,7 +39,7 @@ int	ft_putstr(char *str)
 int	ft_putnbr(int nb, int count)
 {
 	if (nb == 0)
-			return (ft_putchar('0'));
+		return (ft_putchar('0'));
 	if (nb == -2147483648)
 	{
 		count += ft_putchar('-');
@@ -59,19 +60,21 @@ int	ft_putnbr(int nb, int count)
 		count += ft_putchar(nb + '0');
 	return (count);
 }
+
 int	ft_putnbr_pos(unsigned int nb, int count)
 {
 	if (nb == 0)
-			return (ft_putchar('0'));
+		return (ft_putchar('0'));
 	if (nb > 9)
 	{
 		count = ft_putnbr_pos(nb / 10, count);
 		count += ft_putchar ((nb % 10) + '0');
 	}
 	else
-			count += ft_putchar(nb + '0');
+		count += ft_putchar(nb + '0');
 	return (count);
 }
+
 int	ft_pointer(va_list args)
 {
 	void	*ptr;
@@ -84,11 +87,7 @@ int	ft_pointer(va_list args)
 	else
 	{
 		count += ft_putstr("0x");
-		count += puthexnbr((size_t)ptr, 0, 'x');
+		count += ft_puthexnbr((size_t)ptr, 0, 'x');
 	}
 	return (count);
 }
-
-/* putnbr 
-putnbr_pos
-puthexdec */
