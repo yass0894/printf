@@ -6,13 +6,13 @@
 /*   By: yibrahim <yibrahim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:41:03 by yibrahim          #+#    #+#             */
-/*   Updated: 2024/10/16 11:51:18 by yibrahim         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:19:51 by yibrahim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printformat(const char *specifier, va_list args)
+int	ft_printformat(va_list args, const char *specifier)
 {
 	int	count;
 
@@ -50,13 +50,11 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%' && format[i +1])
 		{
 			i++;
-			count += ft_printformat(&format[i], args);
+			count += ft_printformat(args, &format[i]);
 		}
 		else
-		{
 			count += ft_putchar(format[i]);
-			i++;
-		}
+		i++;
 	}
 	va_end(args);
 	return (count);
